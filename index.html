@@ -59,6 +59,20 @@
             font-weight: bold;
             color: #1a1a1a;
             margin-bottom: 15px;
+            display: flex;
+            align-items: flex-end; /* 确保名字和后面的字底部对齐 */
+            flex-wrap: wrap;
+        }
+
+        /* 重点：手写姓名样式 */
+        .handwritten-name {
+            font-family: "STXingkai", "华文行楷", "STKaiti", "KaiTi", cursive;
+            font-size: 38px; /* 显著放大 */
+            color: #1a1a1a;
+            margin-right: 10px;
+            line-height: 1;
+            font-weight: normal; /* 手写体不需要太粗，自然最美 */
+            display: inline-block;
         }
 
         .content {
@@ -82,7 +96,6 @@
             align-items: flex-end;
         }
 
-        /* 祝福语与队徽重叠容器 */
         .wish-seal-container {
             position: relative;
             display: inline-block;
@@ -96,22 +109,20 @@
             line-height: 1.8;
             font-style: italic;
             position: relative;
-            z-index: 1; /* 文字置于底层 */
+            z-index: 1;
         }
 
-        /* 队徽印章：歪斜且高透明度 */
         .team-seal {
             position: absolute;
             top: 50%;
             left: 50%;
-            /* translate控制居中，rotate(-15deg)控制倾斜 */
             transform: translate(-50%, -50%) rotate(-15deg); 
-            width: 150px; /* 略微放大，更有张力 */
+            width: 150px; 
             height: auto;
-            opacity: 0.45; /* 降低不透明度（即增加透明感），模拟印油沁入纸张的效果 */
+            opacity: 0.45; 
             pointer-events: none;
-            z-index: 2; /* 盖在文字上方 */
-            mix-blend-mode: multiply; /* 混合模式：让红色印章与下方文字和纸张颜色融合 */
+            z-index: 2; 
+            mix-blend-mode: multiply; 
         }
 
         .org-name {
@@ -133,8 +144,9 @@
             .header-decor { font-size: 12px; letter-spacing: 1px; }
             .content { font-size: 17px; background-size: 100% 35.7px; }
             .org-name { font-size: 18px; }
-            .team-seal { width: 130px; } /* 手机端稍缩放 */
+            .team-seal { width: 130px; }
             .wish-list { font-size: 15px; }
+            .handwritten-name { font-size: 32px; } /* 手机端稍微缩小一点名字 */
         }
     </style>
 </head>
@@ -148,6 +160,7 @@
 
         <div class="header-decor">—— 贰零贰陆 · 岁序更替 华章日新 ——</div>
 
+        <!-- 这里保持 id 即可，JS 会自动填充 -->
         <div class="greeting" id="userName">正在加载...</div>
 
         <div class="content">
@@ -161,13 +174,11 @@
         </div>
 
         <div class="footer">
-            <!-- 队徽覆盖祝福语 -->
             <div class="wish-seal-container">
                 <div class="wish-list">
                     衷心祝你新年快乐、考试顺利、<br>
                     学业进步、平安顺遂！
                 </div>
-                <!-- 歪斜、高透明的队徽 -->
                 <img src="https://pic1.imgdb.cn/item/694e87feb34383fd59c65e2f.png" alt="队徽" class="team-seal">
             </div>
 
@@ -181,7 +192,10 @@
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name) || "战友";
         }
-        document.getElementById('userName').innerText = getParam('n') + " 同学你好：";
+        
+        // 修改这里的逻辑：使用 innerHTML 插入带样式的 span
+        const nameVal = getParam('n');
+        document.getElementById('userName').innerHTML = `<span class="handwritten-name">${nameVal}</span> 同学你好：`;
     </script>
 </body>
 </html>
