@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>西电国护2026致队员的信</title>
+    <style>
+        :root {
+            --paper-bg: #fdfaf5; 
+            --ink-color: #2c3e50; 
+            --honor-red: #b22222; 
+            --line-color: #e8e0d5; 
+            --date-gray: #b0b0b5; 
+            --wish-very-light: #b0b0b5; 
+        }
+
+        body {
+            background-color: #e5e5e5;
+            margin: 0; padding: 10px;
+            font-family: "STKaiti", "KaiTi", "楷体", serif;
+            display: flex; justify-content: center;
+        }
+
+        .letter-wrap {
+            max-width: 750px; 
+            width: 100%;
+            background: var(--paper-bg);
+            padding: 40px 30px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #d4c5af;
+            box-sizing: border-box;
+        }
+
+        /* 红色直角花边 */
+        .corner {
+            position: absolute; width: 35px; height: 35px;
+            border: 3px solid var(--honor-red);
+            pointer-events: none;
+        }
+        .top-left { top: 10px; left: 10px; border-right: 0; border-bottom: 0; }
+        .top-right { top: 10px; right: 10px; border-left: 0; border-bottom: 0; }
+        .bottom-left { bottom: 10px; left: 10px; border-right: 0; border-top: 0; }
+        .bottom-right { bottom: 10px; right: 10px; border-left: 0; border-top: 0; }
+
+        .header-decor {
+            text-align: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            font-size: 14px;
+            color: var(--honor-red);
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .greeting {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .content {
+            font-size: 19px;
+            line-height: 2.1; 
+            color: var(--ink-color);
+            text-align: justify;
+            background-image: linear-gradient(var(--line-color) 1px, transparent 1px);
+            background-size: 100% 39.9px; 
+            margin-top: 20px;
+            padding-top: 5px;
+        }
+
+        .content p { margin: 0; text-indent: 2em; }
+
+        .footer {
+            margin-top: 60px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        /* 祝福语与队徽重叠容器 */
+        .wish-seal-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+        }
+
+        .wish-list {
+            font-size: 18px;
+            color: var(--wish-very-light); 
+            font-family: "Microsoft YaHei", "Heiti SC", sans-serif;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            z-index: 1; /* 文字置于底层 */
+        }
+
+        /* 队徽印章：歪斜且高透明度 */
+        .team-seal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            /* translate控制居中，rotate(-15deg)控制倾斜 */
+            transform: translate(-50%, -50%) rotate(-15deg); 
+            width: 150px; /* 略微放大，更有张力 */
+            height: auto;
+            opacity: 0.45; /* 降低不透明度（即增加透明感），模拟印油沁入纸张的效果 */
+            pointer-events: none;
+            z-index: 2; /* 盖在文字上方 */
+            mix-blend-mode: multiply; /* 混合模式：让红色印章与下方文字和纸张颜色融合 */
+        }
+
+        .org-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--honor-red);
+            margin-bottom: 5px;
+            white-space: nowrap;
+            letter-spacing: 1px;
+        }
+
+        .date {
+            font-size: 15px;
+            color: var(--date-gray);
+        }
+
+        @media screen and (max-width: 480px) {
+            .letter-wrap { padding: 35px 15px; }
+            .header-decor { font-size: 12px; letter-spacing: 1px; }
+            .content { font-size: 17px; background-size: 100% 35.7px; }
+            .org-name { font-size: 18px; }
+            .team-seal { width: 130px; } /* 手机端稍缩放 */
+            .wish-list { font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-wrap">
+        <div class="corner top-left"></div>
+        <div class="corner top-right"></div>
+        <div class="corner bottom-left"></div>
+        <div class="corner bottom-right"></div>
+
+        <div class="header-decor">—— 贰零贰陆 · 岁序更替 华章日新 ——</div>
+
+        <div class="greeting" id="userName">正在加载...</div>
+
+        <div class="content">
+            <p>值此2026年元旦来临之际，西安电子科技大学国旗护卫队向你致以诚挚的问候和美好的新年祝愿。</p>
+            <p>在今年换届之际，当你站在可以离开的节点上，却主动选择留下，继续与队伍并肩前行。队伍记得这份选择，也深知这并非一时冲动，而是一份对队伍的牵挂与责任。它或许没有被反复提起，却一直被队伍珍重地放在心里。感谢你在最需要稳定与承担的时候，选择站出来、留下来。</p>
+            <p>走到今天，你早已不只是站在队伍中的一员。作为五分队的一员，你已成长为队伍不可或缺的重要骨干，承担起组织、带训与引领的责任。从曾经站在国旗下的庄严时刻，到如今更多站在队伍运行与衔接的关键位置，你始终把标准放在心里，把责任扛在肩上。很多时候，你走在最前面，也站在最后面；你把整齐和从容留给队伍，把压力与疲惫默默留给自己。</p>
+            <p>你的名字，也许不常被提起，但你的付出，早已融进队伍的每一次顺利运转之中。训练场上的每一次示范、任务前的每一次组织、队伍中的每一次协调，背后都是无声却坚定的担当，队伍都看在眼里，也记在心里。你见证过清晨升旗时的庄严，也经历过训练场上反复打磨的坚持；你看着新队员从青涩到坚定，也陪伴队伍一步步走向成熟。正是这些看似平凡的时刻，构成了你在队伍中最真实、也最厚重的存在。</p>
+            <p>你清楚什么是标准，也始终明白什么是责任。正因为有你们在，国旗护卫队才能稳稳地传承下去，走得踏实，走得长远。</p>
+            <p>新的一年，你或许正站在回望与前行的交汇处。但请你相信，这段全力以赴、无怨无悔的岁月，终将在未来的某一天，成为你最笃定、也最值得珍惜的底气。</p>
+            <p>愿你在承担中始终保有初心，在付出中看见自己的价值；愿这份责任与荣光，始终陪你走向更远的地方。</p>
+        </div>
+
+        <div class="footer">
+            <!-- 队徽覆盖祝福语 -->
+            <div class="wish-seal-container">
+                <div class="wish-list">
+                    衷心祝你新年快乐、考试顺利、<br>
+                    学业进步、平安顺遂！
+                </div>
+                <!-- 歪斜、高透明的队徽 -->
+                <img src="https://pic1.imgdb.cn/item/694e87feb34383fd59c65e2f.png" alt="队徽" class="team-seal">
+            </div>
+
+            <div class="org-name">西安电子科技大学国旗护卫队</div>
+            <div class="date">2025年12月31日</div>
+        </div>
+    </div>
+
+    <script>
+        function getParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name) || "战友";
+        }
+        document.getElementById('userName').innerText = getParam('n') + " 同学你好：";
+    </script>
+</body>
+</html>
